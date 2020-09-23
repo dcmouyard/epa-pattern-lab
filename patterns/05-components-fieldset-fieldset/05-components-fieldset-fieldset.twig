@@ -1,0 +1,10 @@
+{% set classes = [
+  'fieldset',
+  modifier_classes ? modifier_classes,
+]|join(' ')|trim %}
+
+<fieldset class="{{ classes }}">
+  <legend class="fieldset__legend">{{ legend }}</legend>
+  <div class="usa-hint">{{ description }}</div>
+  {{ content }}
+</fieldset>

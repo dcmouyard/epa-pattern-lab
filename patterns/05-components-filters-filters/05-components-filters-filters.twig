@@ -1,0 +1,34 @@
+{% set classes = [
+  'filters',
+  modifier_classes ? modifier_classes,
+]|join(' ')|trim %}
+
+{% if show_filters %}
+  {% spaceless %}
+  <div class="{{ classes }}" aria-live="polite" aria-atomic="true">
+    <h2 class="u-visually-hidden">Active filters:</h2>
+    <ul class="filters__list">
+      {% for item in list %}
+        <li class="filters__item">
+          {% if pattern_lab %}
+            <a class="filters__link" href="{{ item.url }}" rel="nofollow">
+              {%- include '@components/icon/icon.twig' with {
+                'modifier_classes': 'icon--filter is-spaced-after',
+                'is_hidden': false,
+                'label': 'Remove'|t,
+                'icon_name': 'times-circle',
+              } %}
+              {{ item.text -}}
+            </a>
+          {% else %}
+            {{ item.value }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% if reset_url %}
+      <a class="filters__remove" href="{{ reset_url }}" rel="nofollow">{{ 'Remove all filters'|t }}</a>
+    {% endif %}
+  </div>
+  {% endspaceless %}
+{% endif %}

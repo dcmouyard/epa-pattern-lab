@@ -1,0 +1,15 @@
+{% set classes = [
+  'footer',
+  modifier_classes ? modifier_classes,
+]|join(' ')|trim %}
+
+<footer class="{{ classes }}" role="contentinfo">
+  <div class="l-constrain">
+    <img class="footer__epa-seal" src="{{ epa_theme_image_path }}epa-seal.svg" alt="{{ 'United States Environmental Protection Agency'|t }}" height="100" width="100">
+    <div class="footer__content contextual-region">
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+    </div>
+  </div>
+</footer>

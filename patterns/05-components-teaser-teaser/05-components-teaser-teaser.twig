@@ -1,0 +1,17 @@
+{% set classes = [
+  'teaser',
+  modifier_classes ? modifier_classes,
+]|join(' ')|trim %}
+
+<article class="{{ classes }}" role="article">
+  <div class="teaser__title"><a href="{{ url }}">{{ title }}</a></div>
+  {% if subtitle %}
+    <div class="teaser__subtitle">{{ subtitle }}</div>
+  {% endif %}
+  {% if metadata %}
+    <div class="teaser__metadata">{{ metadata }}</div>
+  {% endif %}
+  {% if summary %}
+    <div class="teaser__summary">{{ summary }}</div>
+  {% endif %}
+</article>

@@ -1,0 +1,14 @@
+{% if file.extension %}
+  {% set type %}
+    ({{ file.extension }})
+  {%- endset %}
+{% endif %}
+
+<a href="{{ url }}" class="file">
+  {%- include '@components/icon/icon.twig' with {
+    'modifier_classes': 'icon--file is-spaced-after',
+    'is_hidden': true,
+    'icon_name': file.icon,
+  } -%}
+  {{- file.name }}{{ type -}}
+</a>

@@ -1,0 +1,38 @@
+{% set content %}
+  {% embed '@components/article/article.twig' with {
+    'title': title,
+    'intro': intro,
+    'content': body,
+    'sidebar': sidebar,
+  } %}
+
+    {% block messages %}
+      {{ messages }}
+    {% endblock %}
+
+    {% block local_tasks %}
+      {{ tasks }}
+    {% endblock %}
+  {% endembed %}
+{% endset %}
+
+{% embed '@layouts/page/page.twig' with {
+  'has_header': has_header,
+  'has_footer': has_footer,
+} %}
+  {% block info %}
+    {{ header_info }}
+  {% endblock %}
+
+  {% block contact %}
+    {{ contact_link }}
+  {% endblock %}
+
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+
+  {% block footer %}
+    {{ footer }}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,26 @@
+{% set classes = [
+  'usa-hero',
+  modifier_classes ? modifier_classes,
+]|join(' ')|trim %}
+
+<section class="{{ classes }}" style="background-image:url({{ background_image }})">
+  <div class="grid-container">
+    <div class="usa-hero__callout usa-dark-background">
+      <{{ title_element }} class="usa-hero__heading">
+        {% if callout %}
+          <span class="usa-hero__heading--alt">{{ callout }}</span>
+        {% endif %}
+        {{ title }}
+      </{{ title_element }}>
+      {% if content %}
+        {{ content }}
+      {% endif %}
+      {% if paragraph %}
+        <p>{{ paragraph }}</p>
+      {% endif %}
+      {% if button_text and button_url %}
+        <a class="usa-button" href="{{ button_url }}">{{ button_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>

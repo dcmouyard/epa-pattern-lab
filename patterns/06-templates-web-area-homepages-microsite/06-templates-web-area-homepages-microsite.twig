@@ -1,0 +1,39 @@
+{% set content %}
+  {% include '@components/page-title/page-title.twig' with {
+    'page_title': title
+  } %}
+
+  {% block messages %}
+    {{ messages }}
+  {% endblock %}
+
+  {% block local_tasks %}
+    {{ tasks }}
+  {% endblock %}
+
+  {{ slideshow }}
+  {{ body }}
+{% endset %}
+
+{% embed '@layouts/page/page.twig' with {
+  'has_header': has_header,
+  'has_footer': has_footer,
+} %}
+  {% block info %}
+    {{ header_info }}
+  {% endblock %}
+
+  {% block contact %}
+    {{ contact_link }}
+  {% endblock %}
+
+  {% block content %}
+    <article class="article">
+      {{ content }}
+    </article>
+  {% endblock %}
+
+  {% block footer %}
+    {{ footer }}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,24 @@
+{% set classes = [
+  'l-sidebar',
+  modifier_classes ? modifier_classes,
+]|join(' ')|trim %}
+
+<div class="{{ classes }}">
+  <div class="l-sidebar__main">
+    {% block main_content %}
+      {% include '@layouts/_sample-content/sample-content.twig' with {
+        'content': 'Main Content',
+      } %}
+    {% endblock %}
+  </div>
+
+  {% if has_sidebar %}
+    <div class="l-sidebar__sidebar">
+      {% block sidebar %}
+        {% include '@layouts/_sample-content/sample-content.twig' with {
+          'content': 'Sidebar Content',
+        } %}
+      {% endblock %}
+    </div>
+  {% endif %}
+</div>

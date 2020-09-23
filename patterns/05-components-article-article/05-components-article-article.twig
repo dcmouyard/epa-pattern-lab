@@ -1,0 +1,59 @@
+{% set additional_attributes = {
+  'class': ['article']
+} %}
+
+{% set body_content %}
+  {% if sidebar %}
+    {% embed '@layouts/sidebar/sidebar.twig' with {
+      modifier_classes: '',
+      has_sidebar: true,
+    } %}
+      {% block main_content %}
+        {{ body }}
+      {% endblock %}
+
+      {% block sidebar %}
+        {{ sidebar }}
+      {% endblock %}
+    {% endembed %}
+  {% else %}
+    {{ body }}
+  {% endif %}
+{% endset %}
+
+<article {{ add_attributes(additional_attributes) }}>
+  {% block title %}
+    {% include '@components/page-title/page-title.twig' with {
+      'page_title': title
+    } %}
+  {% endblock %}
+
+  {% block messages %}
+    {% if show_admin_info %}
+      {% include '@uswds/alert/alert--success/alert--success.twig' with {
+        'title': 'Status message',
+        'content': '<p class="usa-alert__text">Basic page <em class="placeholder"><a href="#" hreflang="en">' ~ page_title ~ '</a></em> has been updated.</p>',
+      } %}
+    {% endif %}
+  {% endblock %}
+
+  {% block local_tasks %}
+    {% if show_admin_info %}
+      {% include '@components/button-group/button-group--base/button-group--base.twig' with {
+        'buttons': local_tasks,
+      } %}
+    {% endif %}
+  {% endblock %}
+
+  {% block intro %}
+    {% if intro %}
+      {% include '@uswds/intro/intro.twig' with {
+        'intro': intro,
+      } %}
+    {% endif %}
+  {% endblock %}
+
+  {% block content %}
+    {{ body_content }}
+  {% endblock %}
+</article>

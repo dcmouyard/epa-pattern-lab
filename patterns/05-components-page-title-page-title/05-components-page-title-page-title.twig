@@ -1,0 +1,9 @@
+{% set classes = [
+  'page-title',
+  contextual_links ? 'contextual-region',
+]|join(' ')|trim %}
+
+<h1 class="{{ classes }}">
+  {{- page_title -}}
+  {{- contextual_links -}}
+</h1>

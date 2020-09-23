@@ -1,0 +1,30 @@
+<div class="usa-overlay"></div>
+<header class="l-header">
+  <div class="l-constrain">
+    <div class="l-header__navbar">
+      <div class="l-header__branding">
+        {% block logo %}
+          {% include '@layouts/_sample-content/sample-content.twig' with {
+            'content': 'Logo',
+          } %}
+        {% endblock %}
+        <button class="usa-menu-btn usa-button l-header__menu-button">{{ 'Menu'|t }}</button>
+      </div>
+      <div class="l-header__search">
+        {% block search %}
+          {% include '@layouts/_sample-content/sample-content.twig' with {
+            'content': 'Search',
+          } %}
+        {% endblock %}
+      </div>
+    </div>
+
+  </div>
+  <div class="l-header__nav">
+    {% block navigation %}
+      {% include '@layouts/_sample-content/sample-content.twig' with {
+        'content': 'Navigation',
+      } %}
+    {% endblock %}
+  </div>
+</header>
